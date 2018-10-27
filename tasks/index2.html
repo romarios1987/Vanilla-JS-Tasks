@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List Project with ES6</title>
+</head>
+<body>
+<h1 class="current_date">Todo List Project with ES6</h1>
+
+<script>
+    const currentDate = document.querySelector('.current_date');
+    const date = new Date().toLocaleDateString();
+
+    currentDate.innerHTML = date; // заменяем содержимое
+    console.log(date);
+</script>
+</body>
+</html>
