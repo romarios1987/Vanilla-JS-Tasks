@@ -3,16 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo List Project with ES6</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
-<h1 class="current_date">Todo List Project with ES6</h1>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <div id="main" class="card">
+                <div class="card-content">
+                    <span class="card-title">Task Title</span>
+                    <div class="row">
+                        <form id="task-form" action="">
+                            <div class="input-field col s12">
+                                <input type="text" name="task" id="task">
+                                <label for="task">New Task</label>
+                            </div>
+                            <input type="submit" value="Add Task" class="btn">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card-action">
+                    <h5 id="task-title">Tasks</h5>
+                    <div class="input-field col s12">
+                        <input type="text" name="filter" id="filter">
+                        <label for="filter">Filter Task</label>
+                    </div>
+                    <ul class="collection">
+
+                    </ul>
+                    <a href="#" class="clear-tasks btn black">Clear Tasks</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <script>
-    const currentDate = document.querySelector('.current_date');
-    const date = new Date().toLocaleDateString();
+    const form = document.querySelector('#task-form');
 
-    currentDate.innerHTML = date; // заменяем содержимое
-    console.log(date);
+    // Add task events
+    form.addEventListener('submit', function (e) {
+
+        e.preventDefault();
+
+        const taskInput = document.querySelector('#task');
+        if (taskInput.value === '') {
+            alert('Add task');
+        } else {
+            // create li element
+            const li = document.createElement('li');
+            // add class
+            li.className = 'collection-item';
+
+            // create text Node and append to li
+            li.appendChild(document.createTextNode(taskInput.value));
+
+            // create link
+            const link = document.createElement('a');
+
+            // Add class
+            link.className = 'delete-item secondary-content';
+
+            link.style.cursor = 'pointer';
+
+            // add icon
+            link.innerHTML = '<i class="material-icons">delete</i>';
+
+            // append the link to li
+            li.appendChild(link);
+
+            // append the il to ul
+            const taskList = document.querySelector('.collection');
+            taskList.appendChild(li);
+
+
+            // clear input
+            taskInput.value = '';
+        }
+    });
+
+    // Remove Task
+    const taskList = document.querySelector('.collection');
+    taskList.addEventListener('click', removeTask);
+
+    function removeTask(event) {
+        //event.preventDefault();
+        if (event.target.parentElement.classList.contains('delete-item')) {
+            if (confirm('Are you sure ?')) {
+                event.target.parentElement.parentElement.remove();
+            }
+        }
+    }
+
+    // Filter Task
+    const filter = document.querySelector('#filter');
+
+    filter.addEventListener('keyup', filterTask);
+
+    function filterTask(event) {
+        const text = event.target.value.toLowerCase();
+
+
+        document.querySelectorAll('.collection-item').forEach(function (task) {
+            const item = task.firstChild.textContent;
+            if (item.toLowerCase().indexOf(text) != -1) {
+                console.log(task);
+                task.style.display = 'block';
+            } else {
+                task.style.display = 'node';
+            }
+        })
+    }
+
+
+    // Clear Task
+    const clearBtn = document.querySelector('.clear-tasks');
+    clearBtn.addEventListener('click', clearTasks);
+
+    function clearTasks() {
+        taskList.innerHTML = '';
+    }
+
 </script>
 </body>
 </html>
