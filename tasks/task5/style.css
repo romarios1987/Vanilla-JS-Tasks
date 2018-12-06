@@ -1,0 +1,54 @@
+h1 {
+    text-align: center;
+}
+body{
+    background: #dddddd;
+}
+
+.wrapper-form {
+    display: flex;
+    justify-content: center;
+}
+
+.wrap-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 500px;
+}
+
+.wrap-input label {
+    font-family: sans-serif;
+}
+
+.wrap-input span, #invalid-feedback-radio {
+    font-size: 12px;
+    color: red;
+    font-family: monospace;
+}
+
+.form-input, textarea{
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.radio-input {
+    flex-direction: row;
+}
+
+#country {
+    padding: 10px;
+    outline: none;
+}
+.btn{
+    padding: 10px;
+    cursor: pointer;
+}
+.has-error {
+    border-color: red;
+}
+
+.has-success {
+    border-color: green;
+}

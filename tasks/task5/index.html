@@ -1,12 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="stylesheet" href="style.css"/>
     <title>Validation Form</title>
 </head>
 <body>
-    <h1>Validation Form</h1>
-    <script src="script.js"></script>
+<h1>Validation Form</h1>
+
+<div class="wrapper-form">
+    <form action="" id="main-form">
+        <div class="wrap-input">
+            <label for="first_name">First Name<span>*</span></label>
+            <input title="Input First Name" class="form-input" name="first_name" type="text"
+                   data-validation="first_name"
+                   id="first_name" placeholder="Enter your First Name">
+            <span class="invalid-feedback"></span>
+        </div>
+        <div class="wrap-input">
+            <label for="last_name">Last Name<span>*</span></label>
+            <input title="Input First Name" class="form-input" name="last_name" type="text" data-validation="last_name"
+                   id="last_name" placeholder="Enter your Last Name">
+            <span class="invalid-feedback"></span>
+        </div>
+
+        <div class="wrap-input">
+            <label for="birthday">Birthday<span>*</span></label>
+            <input type="date" class="form-input" id="birthday" name="birthday" data-validation="birthday"
+                   placeholder="Enter your Birth Date">
+            <span class="invalid-feedback"></span>
+        </div>
+
+        <div class="wrap-input">
+            <div class="radio-inputs">
+                <label>Gender<span>*</span></label>
+                <input title="Gender Male" type="radio" name="gender" value="Male">Male
+                <input title="Gender Female" type="radio" name="gender" value="Female">Female
+            </div>
+            <span id="invalid-feedback-radio"></span>
+        </div>
+
+        <div class="wrap-input">
+            <label for="country">Country<span>*</span></label>
+            <select name="country" id="country" data-validation="country">
+                <option value="">Select your country</option>
+                <option value="1">Ukraine</option>
+                <option value="2">USA</option>
+                <option value="3">Poland</option>
+                <option value="4">Germany</option>
+            </select>
+            <span class="invalid-feedback"></span>
+        </div>
+
+        <div class="wrap-input">
+            <label for="email">Email<span>*</span></label>
+            <input title="Input Email" class="form-input" name="email" type="text" data-validation="email" id="email"
+                   placeholder="Enter your Email">
+            <span class="invalid-feedback"></span>
+        </div>
+
+        <div class="wrap-input">
+            <label for="email">Password<span>*</span></label>
+            <input title="Input Password" class="form-input" name="password" type="password" data-validation="password"
+                   id="password"
+                   placeholder="Enter your Password">
+            <span class="invalid-feedback"></span>
+        </div>
+
+
+        <div class="wrap-input">
+            <label for="address">Address<span>*</span></label>
+            <input title="Input Address" class="form-input" name="address" type="text" data-validation="address"
+                   id="address"
+                   placeholder="Enter your Address">
+            <span class="invalid-feedback"></span>
+        </div>
+
+
+        <div class="wrap-input">
+            <label for="notes">Notes</label>
+            <textarea name="notes" id="notes" class="form-input" cols="30" rows="10">Your notes...</textarea>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
