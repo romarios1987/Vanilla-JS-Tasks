@@ -3,11 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Game "Bulls and Cows"</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
+
+<style>
+    .turns{
+        font-weight: 500;
+    }
+</style>
 <body>
-<h1>Game "Bulls and Cows"</h1>
 
 
+<div class="container">
+    <h1 class="center-align">Game "Bulls and Cows"</h1>
+
+
+    <div class="row">
+
+        <div class="col s6 offset-s3">
+            <h6 class="right-align">Number of attempts: <span class="turns">10</span></h6>
+            <form id="form">
+                <div class="input-field col s12">
+                    <input type="text" id="enterNumber" autocomplete="off">
+                    <label for="enterNumber">Enter number</label>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit">Check</button>
+            </form>
+
+            <h1 style="text-align: center" id="res_info"></h1>
+
+                <ul class="collection" id="result">
+
+                </ul>
+
+            <h4 class="rightAnswer"></h4>
+        </div>
+    </div>
+</div>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
