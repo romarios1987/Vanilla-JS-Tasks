@@ -19,20 +19,22 @@ class Book {
 
 class UI {
     static displayBooks() {
-        const StoredBooks = [
-            {
-                title: 'Book 1',
-                author: 'John Doe',
-                isbn: '2344'
-            },
-            {
-                title: 'Book 2',
-                author: 'John Doe',
-                isbn: '233344'
-            }
-        ];
+        // const StoredBooks = [
+        //     {
+        //         title: 'Book 1',
+        //         author: 'John Doe',
+        //         isbn: '2344'
+        //     },
+        //     {
+        //         title: 'Book 2',
+        //         author: 'John Doe',
+        //         isbn: '233344'
+        //     }
+        // ];
 
-        const books = StoredBooks;
+        // const books = StoredBooks;
+
+        const books = Store.getBooks();
 
         books.forEach((book) => UI.addBookToList(book));
     };
@@ -85,6 +87,39 @@ class UI {
 }
 
 // Store Class: Handles Storage
+class Store {
+
+    static getBooks() {
+        let books;
+        if (localStorage.getItem('books') === null) {
+            books = [];
+        } else {
+            books = JSON.parse(localStorage.getItem('books'));
+        }
+        return books;
+    }
+
+
+    static addBook(book) {
+        const books = Store.getBooks();
+        books.push(book);
+        localStorage.setItem('books', JSON.stringify(books))
+    }
+
+    static removeBook(isbn) {
+        const books = Store.getBooks();
+
+        books.forEach((book, index) => {
+            if (book.isbn === isbn) {
+                books.splice(index, 1);
+            }
+        });
+
+        localStorage.setItem('books', JSON.stringify(books));
+
+    }
+}
+
 
 /**
  * Event: Display books
@@ -119,6 +154,9 @@ document.querySelector('#book_form').addEventListener('submit', (e) => {
         // Add Book to UI
         UI.addBookToList(book);
 
+        // Add Book to store
+        Store.addBook(book);
+
         // Success Massage
         UI.showAlert('Book Added', 'success');
 
@@ -135,7 +173,14 @@ document.querySelector('#book_form').addEventListener('submit', (e) => {
 
 document.querySelector('#book_list').addEventListener('click', (e) => {
     // console.log(e.target)
+
+
+    // Remove Book From UI
     UI.deleteBook(e.target);
+
+
+    // Remove Book From Store
+    Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
 
     // Success Massage
     UI.showAlert('Book Removed', 'success');
