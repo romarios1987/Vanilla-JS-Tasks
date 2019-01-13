@@ -1,486 +1,112 @@
 'use strict';
-/*
-
-const ANCESTRY_FILE = [
-    {
-        "name": "Carolus Haverbeke",
-        "sex": "m",
-        "born": 1832,
-        "died": 1905,
-        "father": "Carel Haverbeke",
-        "mother": "Maria van Brussel"
-    },
-    {
-        "name": "Emma de Milliano",
-        "sex": "f",
-        "born": 1876,
-        "died": 1956,
-        "father": "Petrus de Milliano",
-        "mother": "Sophia van Damme"
-    },
-    {
-        "name": "Maria de Rycke",
-        "sex": "f",
-        "born": 1683,
-        "died": 1724,
-        "father": "Frederik de Rycke",
-        "mother": "Laurentia van Vlaenderen"
-    },
-    {
-        "name": "Jan van Brussel",
-        "sex": "m",
-        "born": 1714,
-        "died": 1748,
-        "father": "Jacobus van Brussel",
-        "mother": "Joanna van Rooten"
-    },
-    {
-        "name": "Philibert Haverbeke",
-        "sex": "m",
-        "born": 1907,
-        "died": 1997,
-        "father": "Emile Haverbeke",
-        "mother": "Emma de Milliano"
-    },
-    {
-        "name": "Jan Frans van Brussel",
-        "sex": "m",
-        "born": 1761,
-        "died": 1833,
-        "father": "Jacobus Bernardus van Brussel",
-        "mother": null
-    },
-    {
-        "name": "Pauwels van Haverbeke",
-        "sex": "m",
-        "born": 1535,
-        "died": 1582,
-        "father": "N. van Haverbeke",
-        "mother": null
-    },
-    {
-        "name": "Clara Aernoudts",
-        "sex": "f",
-        "born": 1918,
-        "died": 2012,
-        "father": "Henry Aernoudts",
-        "mother": "Sidonie Coene"
-    },
-    {
-        "name": "Emile Haverbeke",
-        "sex": "m",
-        "born": 1877,
-        "died": 1968,
-        "father": "Carolus Haverbeke",
-        "mother": "Maria Sturm"
-    },
-    {
-        "name": "Lieven de Causmaecker",
-        "sex": "m",
-        "born": 1696,
-        "died": 1724,
-        "father": "Carel de Causmaecker",
-        "mother": "Joanna Claes"
-    },
-    {
-        "name": "Pieter Haverbeke",
-        "sex": "m",
-        "born": 1602,
-        "died": 1642,
-        "father": "Lieven van Haverbeke",
-        "mother": null
-    },
-    {
-        "name": "Livina Haverbeke",
-        "sex": "f",
-        "born": 1692,
-        "died": 1743,
-        "father": "Daniel Haverbeke",
-        "mother": "Joanna de Pape"
-    },
-    {
-        "name": "Pieter Bernard Haverbeke",
-        "sex": "m",
-        "born": 1695,
-        "died": 1762,
-        "father": "Willem Haverbeke",
-        "mother": "Petronella Wauters"
-    },
-    {
-        "name": "Lieven van Haverbeke",
-        "sex": "m",
-        "born": 1570,
-        "died": 1636,
-        "father": "Pauwels van Haverbeke",
-        "mother": "Lievijne Jans"
-    },
-    {
-        "name": "Joanna de Causmaecker",
-        "sex": "f",
-        "born": 1762,
-        "died": 1807,
-        "father": "Bernardus de Causmaecker",
-        "mother": null
-    },
-    {
-        "name": "Willem Haverbeke",
-        "sex": "m",
-        "born": 1668,
-        "died": 1731,
-        "father": "Lieven Haverbeke",
-        "mother": "Elisabeth Hercke"
-    },
-    {
-        "name": "Pieter Antone Haverbeke",
-        "sex": "m",
-        "born": 1753,
-        "died": 1798,
-        "father": "Jan Francies Haverbeke",
-        "mother": "Petronella de Decker"
-    },
-    {
-        "name": "Maria van Brussel",
-        "sex": "f",
-        "born": 1801,
-        "died": 1834,
-        "father": "Jan Frans van Brussel",
-        "mother": "Joanna de Causmaecker"
-    },
-    {
-        "name": "Angela Haverbeke",
-        "sex": "f",
-        "born": 1728,
-        "died": 1734,
-        "father": "Pieter Bernard Haverbeke",
-        "mother": "Livina de Vrieze"
-    },
-    {
-        "name": "Elisabeth Haverbeke",
-        "sex": "f",
-        "born": 1711,
-        "died": 1754,
-        "father": "Jan Haverbeke",
-        "mother": "Maria de Rycke"
-    },
-    {"name": "Lievijne Jans", "sex": "f", "born": 1542, "died": 1582, "father": null, "mother": null},
-    {
-        "name": "Bernardus de Causmaecker",
-        "sex": "m",
-        "born": 1721,
-        "died": 1789,
-        "father": "Lieven de Causmaecker",
-        "mother": "Livina Haverbeke"
-    },
-    {
-        "name": "Jacoba Lammens",
-        "sex": "f",
-        "born": 1699,
-        "died": 1740,
-        "father": "Lieven Lammens",
-        "mother": "Livina de Vrieze"
-    },
-    {
-        "name": "Pieter de Decker",
-        "sex": "m",
-        "born": 1705,
-        "died": 1780,
-        "father": "Joos de Decker",
-        "mother": "Petronella van de Steene"
-    },
-    {
-        "name": "Joanna de Pape",
-        "sex": "f",
-        "born": 1654,
-        "died": 1723,
-        "father": "Vincent de Pape",
-        "mother": "Petronella Wauters"
-    },
-    {
-        "name": "Daniel Haverbeke",
-        "sex": "m",
-        "born": 1652,
-        "died": 1723,
-        "father": "Lieven Haverbeke",
-        "mother": "Elisabeth Hercke"
-    },
-    {
-        "name": "Lieven Haverbeke",
-        "sex": "m",
-        "born": 1631,
-        "died": 1676,
-        "father": "Pieter Haverbeke",
-        "mother": "Anna van Hecke"
-    },
-    {
-        "name": "Martina de Pape",
-        "sex": "f",
-        "born": 1666,
-        "died": 1727,
-        "father": "Vincent de Pape",
-        "mother": "Petronella Wauters"
-    },
-    {
-        "name": "Jan Francies Haverbeke",
-        "sex": "m",
-        "born": 1725,
-        "died": 1779,
-        "father": "Pieter Bernard Haverbeke",
-        "mother": "Livina de Vrieze"
-    },
-    {
-        "name": "Maria Haverbeke",
-        "sex": "m",
-        "born": 1905,
-        "died": 1997,
-        "father": "Emile Haverbeke",
-        "mother": "Emma de Milliano"
-    },
-    {
-        "name": "Petronella de Decker",
-        "sex": "f",
-        "born": 1731,
-        "died": 1781,
-        "father": "Pieter de Decker",
-        "mother": "Livina Haverbeke"
-    },
-    {
-        "name": "Livina Sierens",
-        "sex": "f",
-        "born": 1761,
-        "died": 1826,
-        "father": "Jan Sierens",
-        "mother": "Maria van Waes"
-    },
-    {
-        "name": "Laurentia Haverbeke",
-        "sex": "f",
-        "born": 1710,
-        "died": 1786,
-        "father": "Jan Haverbeke",
-        "mother": "Maria de Rycke"
-    },
-    {
-        "name": "Carel Haverbeke",
-        "sex": "m",
-        "born": 1796,
-        "died": 1837,
-        "father": "Pieter Antone Haverbeke",
-        "mother": "Livina Sierens"
-    },
-    {
-        "name": "Elisabeth Hercke",
-        "sex": "f",
-        "born": 1632,
-        "died": 1674,
-        "father": "Willem Hercke",
-        "mother": "Margriet de Brabander"
-    },
-    {
-        "name": "Jan Haverbeke",
-        "sex": "m",
-        "born": 1671,
-        "died": 1731,
-        "father": "Lieven Haverbeke",
-        "mother": "Elisabeth Hercke"
-    },
-    {
-        "name": "Anna van Hecke",
-        "sex": "f",
-        "born": 1607,
-        "died": 1670,
-        "father": "Paschasius van Hecke",
-        "mother": "Martijntken Beelaert"
-    },
-    {
-        "name": "Maria Sturm",
-        "sex": "f",
-        "born": 1835,
-        "died": 1925,
-        "father": "Charles Sturm",
-        "mother": "Seraphina Spelier"
-    },
-    {
-        "name": "Jacobus Bernardus van Brussel",
-        "sex": "m",
-        "born": 1736,
-        "died": 1816,
-        "father": "Jan van Brussel",
-        "mother": "Elisabeth Haverbeke"
-    }
-];
-
-// Существует набор данных на основе него
-
-// подсчитайте средний возраст мужчин
-// подсчитайте средний возраст женщин
-// подсчитайте среднюю разницу в возрасте между матерями и их детьми
-// выполните выше указанные подсчеты для каждого из столетий Назначаем столетию людей, беря их год смерти, деля его на 100 и округляя: Math.ceil(person.died / 100).
-
-
-/!**
- *
- * @param array
- * @returns {number}
- *!/
-function average(array) {
-    function plus(a, b) {
-        return a + b;
-    }
-
-    return Math.round(array.reduce(plus) / array.length);
-}
-
-
-const byName = {};
-ANCESTRY_FILE.forEach((person) => {
-    byName[person.name] = person;
-});
-
-
-/!**
- *
- * @param people
- * @returns {*}
- *!/
-function getAverageMenAge(people) {
-    const averageMenAge = people.filter(person => person.sex === 'm').map(person => person.died - person.born);
-    return average(averageMenAge);
-}
-
-console.log(getAverageMenAge(ANCESTRY_FILE));
-
-
-/!**
- *
- * @param people
- * @returns {*}
- *!/
-function getAverageWomenAge(people) {
-    const averageWomenAge = people.filter(person => person.sex === 'f').map(person => person.died - person.born);
-    return average(averageWomenAge);
-}
-
-console.log(getAverageWomenAge(ANCESTRY_FILE));
-
-
-/!**
- *
- * @param people
- * @returns {*}
- *!/
-function getAverageDiff(people) {
-    const differences = people.filter(person => byName[person.mother] != null).map(person => person.born - byName[person.mother].born);
-    return average(differences);
-}
-
-console.log(getAverageDiff(ANCESTRY_FILE));
-
-
-/!**
- *
- * @param people
- *!/
-function getAverageByCentury(people) {
-
-    const averageAgeByCentury = {};
-
-    people.forEach((person) => {
-        const century = Math.ceil(person.died / 100) + "";
-        if (averageAgeByCentury[century] == null) {
-            averageAgeByCentury[century] = [];
-        }
-        averageAgeByCentury[century].push(person.died - person.born);
-    });
-
-    for (let century in averageAgeByCentury) {
-        if (averageAgeByCentury.hasOwnProperty(century)) {
-            console.log(`${century} Century: ${average(averageAgeByCentury[century])} average age`);
-        }
-    }
-}
-
-getAverageByCentury(ANCESTRY_FILE);
-
-
-let actualMen = getAverageMenAge(ANCESTRY_FILE);
-let expectedMen = 62;
-
-console.assert(
-    actualMen === expectedMen,
-    `Men' ${ actualMen } average age is not equal to expected ${ expectedMen }`
-);
-
-let actualWomen = getAverageWomenAge(ANCESTRY_FILE);
-let expectedWomen = 55;
-
-console.assert(
-    actualWomen === expectedWomen,
-    `Women' ${ actualWomen } average age is not equal to expected ${ expectedWomen }`
-);
-
-let roundedActualDiff = Math.round(getAverageDiff(ANCESTRY_FILE));
-let expectedDiff = 31;
-
-console.assert(
-    roundedActualDiff === expectedDiff,
-    `Mothers and children average age diff of ${ roundedActualDiff } is not equal to expected ${ expectedDiff }`
-);*/
-
-
-'use strict';
-
-let a = {name: 'Misha', order: {price: 20}};
-let b = {order: {price: 20}, name: 'Misha'};
-let c = {name: 'Misha', order: {price: 20}, extraField: null};
-let d = {order: {price: 20}, name: 'Petya'};
-let e = {name: 'Misha', order: {price: 1000}};
-let f = {name: 'Misha', order: {price: 20, extraField: null}};
-
-
-console.assert(deepEqual(a, b) === true, 'A and B should be equal');
-console.assert(deepEqual({test: a}, {test: b}) === true, 'A and B should be equal');
-
-
-console.assert(deepEqual(a, c) === false, 'A and C should NOT be equal');
-console.assert(deepEqual(a, d) === false, 'A and D should NOT be equal');
-console.assert(deepEqual(a, e) === false, 'A and E should NOT be equal');
-console.assert(deepEqual(a, f) === false, 'A and F should NOT be equal');
 
 /**
- * Compares 2 objects
- *
- * If values in all props are equal
- * (including props of nested objects)
- *
- * @returns true (otherwise false)
+ - Player must guess a number between a min and max
+ - Player gets a certain amount of guesses
+ - Notify player of guesses remaining
+ - Notify the player of the correct answer if loose
+ - Let player choose to play again
  */
 
 
-function deepEqual(obj1, obj2) {
+//Game Values
+let min = 10,
+    max = 20,
+    winningNum = getRandomNum(min, max),
+    guessesLeft = 3;
 
-    //compare primitives
-    if(isPrimitive(obj1) && isPrimitive(obj2))
-        return obj1 === obj2;
+// UI Elements
+const game = document.querySelector('#game');
+const minNum = document.querySelector('.min-num');
+const maxNum = document.querySelector('.max-num');
+const guessBtn = document.querySelector('#guess-btn');
+const guessInput = document.querySelector('#guess-input');
+const message = document.querySelector('.message');
 
-    if(Object.keys(obj1).length !== Object.keys(obj2).length)
-        return false;
 
-    //compare objects with same number of keys
-    for(let key in obj1)
-    {
-        if(!(key in obj2)) return false; //other object doesn't have this prop
-        if(!deepEqual(obj1[key], obj2[key])) return false;
+// Assign UI min and max
+minNum.textContent = min;
+maxNum.textContent = max;
+
+
+// Play again event listener
+game.addEventListener('mousedown', (e) => {
+    if (e.target.className === 'play-again') {
+        window.location.reload();
     }
-    return true;
+});
+
+
+// Listen for guess
+guessBtn.addEventListener('click', () => {
+
+    let guess = parseInt(guessInput.value);
+
+
+    // Validate
+    if (isNaN(guess) || guess < min || guess > max) {
+        setMessage(`Please enter a number between ${min} and ${max}`, 'red')
+    }
+
+    // Check if won
+    if (guess === winningNum) {
+        // Gage Over - won
+        gameOver(true, `${winningNum} is correct, YOU WIN!`)
+    } else {
+        // Wrong number
+        guessesLeft -= 1;
+
+        if (guessesLeft === 0) {
+            // Game over - lost
+            gameOver(false, `Game Over, you lost. The correct number was ${winningNum}`)
+        } else {
+            // Game continues - answer wrong
+
+            // Change border color
+            guessInput.style.borderColor = 'red';
+
+            // Clear Input
+            guessInput.value = '';
+
+            // Tell user its the wrong number
+            setMessage(`${guess} is not correct, ${guessesLeft} guesses left`, 'red');
+        }
+
+    }
+});
+
+
+function gameOver(won, msg) {
+    let color;
+    won === true ? color = 'green' : color = 'red';
+    //Disable input
+    guessInput.disabled = true;
+    // Change border color
+    guessInput.style.borderColor = color;
+    // set Message
+    setMessage(msg, color);
+
+
+    // Play again
+    guessBtn.value = 'Play again';
+    guessBtn.className += 'play-again';
 }
 
-//check if value is primitive
-function isPrimitive(obj)
-{
-    return (obj !== Object(obj));
+
+// Get Winning Num
+function getRandomNum(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-console.log(deepEqual(a, b));
+
+// set Message
+function setMessage(msg, color) {
+    message.style.color = color;
+    message.textContent = msg;
+}
+
+
+
 
 
 
