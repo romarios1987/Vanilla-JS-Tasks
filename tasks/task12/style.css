@@ -1,0 +1,163 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.wrap {
+    background: #34495e;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.wrap h3 {
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 40px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#board-title {
+    border: 4px solid black;
+    padding: 8px;
+    background: white;
+}
+
+.container h1 {
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.5em;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    margin: 20px 15px 20px;
+
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile {
+    height: 90px;
+    width: 90px;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    transition: content 1s, background 1s;
+    cursor: pointer;
+}
+
+.tile-off {
+    color: #fff;
+}
+
+.tile-win {
+    background: #eb4d4b;
+    color: #fff;
+}
+
+.c1 {
+    border-left: 4px solid black;
+    border-right: 4px solid black;
+}
+
+.c3 {
+    border-left: 4px solid black;
+    border-right: 4px solid black;
+}
+
+.r1 {
+    border-top: 4px solid black;
+    border-bottom: 4px solid black;
+}
+
+.r3 {
+    border-top: 4px solid black;
+    border-bottom: 4px solid black;
+}
+
+.info {
+    margin: 0 15px;
+}
+
+.score-board-header, .score-board, .button-frame button {
+    border: 4px solid black;
+    background: white;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.status-text {
+    text-align: center;
+}
+
+.score-board-title {
+    text-decoration: underline;
+}
+
+.score {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+.score span {
+    flex-grow: 1;
+    text-align: center;
+    font-weight: bold;
+}
+
+.score-player-name {
+    margin: 1em 0 .3em;
+}
+
+.button-frame button {
+    width: 100%;
+    background: white;
+    color: black;
+    font-weight: bold;
+    font-size: 20pt;
+    padding: 10px;
+    visibility: hidden;
+    margin: 0;
+    cursor: pointer;
+}
+
+.button-frame button.button-on {
+    transition: 1s;
+    visibility: visible;
+}
+
+.button-frame button:hover {
+    background: red;
+    color: #ffffff;
+}
+
+.hidden {
+    display: none;
+}
