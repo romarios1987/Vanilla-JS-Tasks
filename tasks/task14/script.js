@@ -1,5 +1,4 @@
 'use strict';
-'use strict';
 
 let steps = 0;
 const puzzle = document.querySelector('#puzzle');
