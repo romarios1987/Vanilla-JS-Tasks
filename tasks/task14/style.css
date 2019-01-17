@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: #c7ecee;
+}
+.info{
+    color: #30336b;
+    font-family: monospace;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+#controls {
+    text-align: center;
+}
+
+#controls button {
+    cursor: pointer;
+    outline: none;
+    padding: 10px 20px;
+    margin: 25px 2px;
+    border: 0;
+    background: #30336b;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+#controls button:hover {
+    background: #eb4d4b;
+}
+
+#puzzle {
+    position: relative;
+    width: 325px;
+    height: 325px;
+    margin: 25px auto 0;
+    border: 3px solid #130f40;
+    border-radius: 4px;
+}
+
+#puzzle span {
+    position: absolute;
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 4px;
+}
+
+#puzzle span.number {
+    cursor: pointer;
+    font: bold 36px/80px Arial;
+    text-align: center;
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+#puzzle span.empty {
+    background: transparent;
+}
+
+#puzzle span.number.light {
+    background: #eb4d4b;
+}
+
+#puzzle span.number.dark {
+    background: #30336b;
+}
+
+#puzzle.animate span {
+    -webkit-transition: 0.15s left, 0.15s top;
+    transition: 0.15s left, 0.15s top;
+}
